@@ -1,0 +1,17 @@
+#main {
+    width: 500px;
+}
+
+div.thumbs img {
+    border: solid 5px white;
+}
+
+div.thumbs img.selected {
+    border: solid 5px red;
+}
+
+div.thumbs img:hover {
+    cursor: pointer;
+    border: solid 5px yellow;
+}
+
