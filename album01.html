@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album</title>
+    <style>
+        #main {
+            width: 500px;
+        }
+    </style>
+    <script>
+        function showBig(photo_name) {
+            document.getElementById("main").src = "photos/" + photo_name + ".jpg";
+        }
+    </script>
+</head>
+<body>
+    <h1> Простейший альбом </h1>
+    <div>
+        <img src="photos/John Lennon_small.jpg" onclick="showBig('John Lennon')"/>
+        <img src="photos/Karl Marx_small.jpg" onclick="showBig('Karl Marx')"/>
+        <img src="photos/Naomi Campbell_small.jpg" onclick="showBig('Naomi Campbell')"/>
+        <img src="photos/Paris Hilton_small.jpg" onclick="showBig('Paris Hilton')"/>
+    </div>
+    <img src="" id="main">
+</body>
+</html>
