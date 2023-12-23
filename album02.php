@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main2.css">
     <title>Album</title>
+    <!-- jQuery - библа для анимации -->
     <script src="scripts/jquery-3.7.1.js"></script>
     <script>
         function showBig(photo_name) {

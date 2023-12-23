@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main2.css">
+    <title>Album</title>
+    <!-- jQuery - библа для анимации -->
+    <script src="scripts/jquery-3.7.1.js"></script>
+    <script>
+        function showBig(photo_name) {
+
+            $("div.thumbs img").removeClass("selected");
+            var thumb = window.event.srcElement;
+            thumb.classList.add("selected");
+            document.getElementById("main").src = "photos/" + photo_name + ".jpg";
+        }
+
+        function addPhotos() {
+            var url = "api/thumbs.php";
+            var xhr = new XMLHttpRequest;
+            
+            xhr.open("GET", url);
+            xhr.onload = function() {
+            let result = JSON.parse(xhr.responseText);
+
+            for (let photo_name of result) {
+                var img = new Image();
+                img.src = "photos/" + photo_name + "_small.jpg";
+                img.onclick = () => showBig(photo_name);
+                document.getElementById("thumbs").appendChild(img);
+            }
+
+            }
+            xhr.send();
+        }
+
+    </script>
+</head>
+<body onload="addPhotos()">
+    <h1>Простейший альбом на PHP & JS (JAVA)</h1>
+    <div id="thumbs" class="thumbs"></div> 
+    <img src="" id="main">
+</body>
+</html>
+
+
