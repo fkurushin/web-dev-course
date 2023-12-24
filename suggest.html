@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main3.css">
+    <title>Document</title>
+    <script src="scripts/jquery-3.7.1.js"></script>
+    <script>
+    
+    function addSuggests(query) {
+        var url = `api/suggest_info_service.php?query=${query}`;
+        var xhr = new XMLHttpRequest;
+        
+        xhr.open("GET", url);
+        xhr.onload = function() {
+            let result = JSON.parse(xhr.responseText);
+
+            // Create a new ul element
+            var ul = document.createElement('ul');
+
+            for (let suggest of result) {
+                // Create a new li element for each suggestion
+                var li = document.createElement('li');
+                li.textContent = suggest;
+
+                // Append the li element to the ul element
+                ul.appendChild(li);
+            }
+
+            // Append the ul element to the body of the document
+            document.body.appendChild(ul);
+        }
+        xhr.send();
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Яндекс найдется все!</h1>
+    <form id="searchForm">
+       <input type="search" id="searchQuery" name="q" placeholder="Search..." onkeyup="addSuggests(this.value)">
+       <button type="submit">Search</button>
+   </form> 
+</body>
+</html>
