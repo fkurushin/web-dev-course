@@ -16,19 +16,15 @@
         xhr.onload = function() {
             let result = JSON.parse(xhr.responseText);
 
-            // Create a new ul element
             var ul = document.createElement('ul');
 
             for (let suggest of result) {
-                // Create a new li element for each suggestion
                 var li = document.createElement('li');
                 li.textContent = suggest;
 
-                // Append the li element to the ul element
                 ul.appendChild(li);
             }
 
-            // Append the ul element to the body of the document
             document.body.appendChild(ul);
         }
         xhr.send();
