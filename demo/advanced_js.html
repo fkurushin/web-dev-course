@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // // ругается на необъявленные ошибки
+        // // чтобы не навалить говна
+        // // 'use strict';
+        
+        // // вот здеся будет err
+        // // x = 123;
+        // // console.log(x);
+
+        // // поднимает область видимости наверх
+        // // можно вызвать из любого места в коде
+        // var q = 123;
+        // {
+        //     // let  - блочная переменная типа как для цикла for {} 
+        //     // дальше фигурных скобок ее не видно
+        //     let w = 123;
+        //     console.log(w);
+        // }
+
+        // console.log(q);       
+
+        // // // типичнвя подковырка var/let
+        // // for (let i=1; i<10; i++) {
+        // //     // однократный таймер
+        // //     window.setTimeout(function(){
+        // //         console.log(i);
+
+        // //     }, 500);
+        // // }
+        // for (let i=1; i<10; i++) {
+        // // однократный таймер
+        // window.setTimeout((function(i) {
+        //     return function() {
+        //         console.log(i);
+        //     };
+        // })(i), 500);
+        // }
+
+
+        // // создание и вызов анонимной ф-ии
+        // //  может применятся для создания области видимости ф-ии
+        // (function(){
+        //     let x = 333;
+        //     console.log(x);
+        // })();
+
+
+        // // типы данных
+        // // number
+        // // string '' == ""
+        // // array -  динамический массив
+        // var nums = [1, 2, 3, 4, 5];
+        // nums.push(6)
+        // console.log(nums)
+        // // bool
+        // // null
+        // // штук 8 надо называть
+        // // ...
+
+
+        // js - процедурный/объектный/ООПшный (объекты есть, но классов нет)
+        // object - это не класс, это функция
+        
+        // var o1 = new Object();
+        // скорее вот так напишут
+        var o1 = {};
+        // вот так вот можно навалить говна (расширить объект)
+        o1.bubu = "bubu";
+        // расширим ф-ией
+        o1.do_it = function() {
+            console.log(`i am gay with name ${this.bubu}`);
+        };
+
+        // console.log(o1.bubu);
+
+        o1.do_it();
+
+
+        var o2 = {
+            lala: 'i pokakal',
+            do_it: function() {
+                console.log(`i am another gay and ${this.lala}`);
+            }
+        };
+
+        o2.do_it();
+
+        // но есть и классы, которые по сути синтаксический сахар, то есть архтиектуру не меняли
+        // просто обертка над объектами
+
+        class Class1 {
+            constructor() {}
+
+            do_it = function() {
+                console.log(`i am 3d gay`);
+            }
+        }
+
+        var o3 = new Class1();
+
+        o3.do_it();
+        // o3 можно также динамически расширять
+
+        // ф-ии и лямбды (в ls стрелочные ф-ии)
+
+        var f1 = function(x) {
+            return 2 * x;
+        };
+
+        var f2 = f1;
+
+        console.log(f2(123));
+
+
+        // стрелочный синтаксис
+
+        var f3 = x => {
+            let result = 2 * x;
+            result += 1;
+            return result;
+        }
+
+        console.log(f3(123));
+
+        // однострочка
+        var f4 = x => x * 2;
+
+        console.log(f4(123));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

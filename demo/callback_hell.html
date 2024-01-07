@@ -1,0 +1,26 @@
+<script>
+    var x = 2;
+    var base_url = "doubler_service.php";
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+        "GET",
+        base_url + "?x=" + x
+    );
+    xhr.onload = () => {
+        let result = JSON.parse(xhr.responseText).result;
+        console.log(result);
+
+
+        var xhr1 = new XMLHttpRequest();
+        xhr1.open(
+            "GET",
+            base_url + "?x=" + result
+        );
+        xhr1.onload = () => {
+            let result = JSON.parse(xhr1.responseText).result;
+            console.log(result);
+        }
+        xhr1.send();
+    }
+    xhr.send();
+</script>

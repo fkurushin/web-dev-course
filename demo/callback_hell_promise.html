@@ -1,0 +1,30 @@
+<script>
+    var x = 2;
+    var base_url = "doubler_service.php";
+
+
+    async function twice(x) {
+        let promise = new Promise( (resolve) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open(
+                "GET",
+                base_url + "?x=" + x
+            );
+            xhr.onload = () => {
+                let result = JSON.parse(xhr.responseText).result;
+                // retutn в callback это нонсенс
+                // так как мы закончим выполненеи раньше ретурна
+                resolve(result);
+            }
+            xhr.send();
+
+        })
+        return promise;
+    };
+
+    (async function () {
+        var y = await twice(x);
+        console.log(y);
+    })();
+
+</script>

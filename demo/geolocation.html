@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo</title>
+    <script>
+        function detectLocation() {
+            // console.log("hi");
+            var locator = navigator.geolocation;
+            locator.getCurrentPosition(result => {
+                console.log(result);
+                document.getElementById("result").innerText = "Широта: " + result.coords.latitude + " Долгота: " + result.coords.longitude;
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="detectLocation();">Your geoposition is:</button>
+    <div id="result"></div>
+</body>
+</html>
+
+

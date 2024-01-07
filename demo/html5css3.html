@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            border: solid 5px red;
+            margin: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #div1 {
+            background: linear-gradient(45deg, blue, white);
+            border-radius: 20px;
+            transition-property: transform;
+            transition-duration: 2s;
+        }
+
+        /* когда наводится мышка */
+        #div1:hover {
+            transform: rotate(405deg);
+        }
+
+        #div2 {
+            background-color: yellow;
+            border-radius: 50%;
+        }
+
+        #div3 {
+            width: 75px;
+            height: 75px;
+            transition-property: transform, border-radius; 
+            transition-duration: 2s, 10s;
+        }
+
+        #div3.clicked {
+           transform: translateY(400px);
+           border-radius: 50%;
+        }
+
+
+        #div4 {
+            background-color: green;
+            transform: translate(50px, 50px) scale(1.2) rotate(30deg);
+        }
+
+    </style>
+    <script>
+        function doIt() {
+            if (document.getElementById("div3").className != "clicked")
+                document.getElementById("div3").className = "clicked"
+            else
+                document.getElementById("div3").className = ""
+        }
+    </script>
+</head>
+<body>
+    <h1>Красоты</h1>
+    <!-- div - вместилище контента, возможность изменения их положение при помощи .css это круто -->
+    <div id="div1"> div 1</div>
+    <div id="div2"> div 2</div>
+    <div id="div3" onclick="doIt();"> div 3</div>
+    <div id="div4"> div 4</div>
+</body>
+</html>

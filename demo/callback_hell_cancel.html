@@ -1,0 +1,33 @@
+<script>
+
+    var x = 2;
+    var base_url = "doubler_service.php";
+
+    // (async function() {
+    //     var response = await fetch(base_url + "?x=" + x);
+    //     var result_json = await response.json();
+    //     var result = result_json.result;
+
+    //     var response1 = await fetch(base_url + "?x=" + result);
+    //     var result_json1 = await response1.json();
+    //     var result1 = result_json1.result;
+
+    //     console.log(result1);
+    // })();
+    
+    async function do4() {
+        var response = await fetch(base_url + "?x=" + x);
+        var result_json = await response.json();
+        var result = result_json.result;
+
+        var response1 = await fetch(base_url + "?x=" + result);
+        var result_json1 = await response1.json();
+        var result1 = result_json1.result;
+
+        console.log(result1);
+    
+    };
+
+</script>
+
+<button onclick="do4();">Press Fucking Here</button>
