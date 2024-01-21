@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main2.css">
+    <title>Album</title>
+    <script src="scripts/jquery-3.7.1.js"></script>
+</head>
+<script>
+    function upload() {
+        // this photo should be written on a server side
+        var photoSmall = $('#photo_small')[0].files[0];
+        var photoMain = $('#photo_main')[0].files[0];
+        
+        // имя которое надо пробросить
+        // photoMain[0].files[0].name
+        
+        // this info should be post to a MySQL DB
+        var title = $('#title').val();
+        var description = $('#description').val();
+        var thumb = photoSmall.name
+        var photo = photoMain.name
+    };
+</script>
+<body>
+    <h2>Добавить новое фото:</h2>
+    <div>
+        <div>
+            <input id="title" placeholder="Название:"/>
+        </div>
+        <div>
+            <input id="description" placeholder="Описание:"/>
+        </div>
+        <div>
+            <label for="myfile">Выберите сжатый файл:</label>
+            <input type="file" id="photo_small">
+        </div>
+        <div>
+            <label for="myfile">Выберите основной файл:</label>
+            <input type="file" id="photo_main" accept=".jpg">
+        </div>
+        <div>
+            <!-- <button onclick="plus();" id="plus"> + </button> -->
+            <button onclick="upload();" type="submit">Загрузить</button>
+        </div>
+        <div>
+            <a href="album05.html">Вернуться назад</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -5,6 +5,13 @@ div.thumbs {
     justify-content: center;
   }
 
+a:link {
+    color: hotpink;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
 #main {
     width: 500px;
     position: fixed;
@@ -20,7 +27,7 @@ html {
 }
 
 h1 {
-    font-size: 140px;
+    font-size: 40px;
     text-size-adjust: 20;
     text-align: center;
 }
@@ -42,4 +49,35 @@ div.thumbs img:hover {
     cursor: pointer;
     transform: scale(1.1);
     border: solid 5px rgb(64, 175, 190);
+}
+
+div.list_img div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#info {
+    height: 500px;
+    display: block;
+    text-align: center;
+}
+
+#info div {
+    display: block;
+    width: 500px;
+    text-align: center;
+}
+
+#title {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+input {
+    display: block;
+    /* внешний отступ */
+    margin: 6px;
+    width: 120;
+    text-align: center;
 }

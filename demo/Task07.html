@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature</title>
+    <script>
+
+        function detectLocation() {
+            // console.log("hi");
+            var locator = navigator.geolocation;
+            locator.getCurrentPosition(result => {
+                console.log(result);
+                document.getElementById("result").innerText = "Широта: " + result.coords.latitude + " Долгота: " + result.coords.longitude;
+            });
+        };
+
+        // function farenheit2Celcius(t) {
+        //     return Math.round((t - 32) * 5 / 9)
+        // };
+
+        url = "https://api.openweathermap.org/data/2.5/weather";
+        // lat = 55.6
+        // lon = 37.7
+        api_key = "c01457d1aa1ab055f9691dbf29b29c04";
+
+        async function getWeather(lat, lon) {
+            let promise = new Promise( (resolve) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open(
+                    "GET",
+                    url + "?lat=" + lat + "&lon=" + lon + "&appid=" + api_key + "&units=Metric"
+
+                );
+                xhr.onload = () => {
+                    let result = JSON.parse(xhr.responseText).main.temp
+                    resolve(result)
+                };
+                xhr.send();
+            })
+            return promise;
+        };
+
+        async function printWeather() {
+            lat = parseInt(document.getElementById("latitude").value);
+            lon = parseInt(document.getElementById("longitude").value);
+            
+            // promise бывает в трех состояниях
+            // ожидает ответа
+            // ответ ок 
+            // ответ с ошибкой
+
+            try {
+                var result = await getWeather(lat, lon);
+                console.log(result)
+                document.getElementById("resultt").innerText = result;
+            } catch (error) {
+                console.error(error);
+            }
+            
+        };
+
+        // (async function () {
+        //     var y = await getWeather(1, 1);
+        //     console.log(y);
+        // })();
+
+    </script>
+</head>
+<body>
+    <button onclick="detectLocation();">Your geoposition is:</button>
+    <div id="result"></div>
+
+    <input id="longitude" placeholder="Долгота:"/>
+    <input id="latitude" placeholder="Широта"/>
+    
+    <button onclick="printWeather();">Your Temperature is:</button>
+    <div id="resultt"></div>
+</body>
+</html>

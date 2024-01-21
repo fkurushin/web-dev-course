@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main2.css">
+    <title>Album</title>
+    <!-- jQuery - библа для анимации $(...).-->
+    <script src="scripts/jquery-3.7.1.js"></script>
+    <script>
+
+        function showBig(photo_id) {
+            $("div.thumbs img").removeClass("selected");
+
+            let url = `api/photo_info_service.php?id=${photo_id}`;
+            // отправлять сетевые запросы на сервер get/post. 
+            // возвращает промис
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                $("#main").attr("src", "photos/" + data[2]);
+                $("#title").text(data[0]);
+                $("#description").text(data[1]);
+            });
+            // var thumb = window.event.srcElement;
+            // thumb.classList.add("selected");
+            // document.getElementById("main").src = "photos/" + photo_name + ".jpg";
+        }
+
+        // запускается по загрузке страницы
+        // является jquery ф-ией
+        $(document).ready(function(){
+            var url = "api/thumb_service_db.php";
+            // Description: Load JSON-encoded data from the server using a GET HTTP request.
+            // This is a shorthand Ajax function:
+            $.getJSON(
+                url,
+                function(data) {
+                    let text = "";
+                    for (let index = 0; index < data.length; index++) {
+                        let id = data[index][0];
+                        let photo_path = "photos/" + data[index][1];
+                        text += `<img src="${photo_path}" onclick="showBig(${id});\" />\n`;    
+                    }
+                    $("div.thumbs").html(text);
+            });
+        });
+    </script>
+</head>
+<body onload="showPhotos()">
+    <h2>Aльбом на PHP & JS (JAVA) c БД</h2>
+    <!-- Элемент разделения контента HTML (<div>) 
+        является универсальным контейнером для потокового контента. 
+        Он не влияет на контент или макет до тех пор, пока не будет 
+        стилизован с помощью CSS. -->
+    <div class="list_img">
+        <div class="thumbs">
+            Загрузка...
+        </div>
+        <div>
+            <img src="" id="main">
+            <div id="info">
+                <div id="title"></div>
+                <div id="description"></div>
+            </div>
+        </div>
+    </div>
+
+    <a href="addnewphoto.html">Добавить новые фотографии</a>
+</body>
+</html>
+
+
