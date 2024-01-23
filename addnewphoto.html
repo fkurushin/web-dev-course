@@ -21,6 +21,29 @@
         var description = $('#description').val();
         var thumb = photoSmall.name
         var photo = photoMain.name
+
+
+        var url = "api/photo_post_service.php";
+        var xhr = new XMLHttpRequest();
+
+        var data = {
+            title: title,
+            description: description,
+            thumb: thumb,
+            photo: photo
+        };
+
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+            }
+        };
+
+        xhr.send(JSON.stringify(data));
+
     };
 </script>
 <body>
