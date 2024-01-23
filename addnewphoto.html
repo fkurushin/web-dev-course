@@ -13,9 +13,19 @@
         var photoSmall = $('#photo_small')[0].files[0];
         var photoMain = $('#photo_main')[0].files[0];
         
-        // имя которое надо пробросить
-        // photoMain[0].files[0].name
-        
+        var formData = new FormData();
+        formData.append('photo_small', photoSmall);
+        formData.append('photo_main', photoMain);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'api/post_photo_server.php', true);
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+            }
+        };
+        xhr.send(formData);
+
         // this info should be post to a MySQL DB
         var title = $('#title').val();
         var description = $('#description').val();
@@ -23,7 +33,7 @@
         var photo = photoMain.name
 
 
-        var url = "api/photo_post_service.php";
+        var url = "api/post_photo_info_db.php";
         var xhr = new XMLHttpRequest();
 
         var data = {
@@ -57,7 +67,7 @@
         </div>
         <div>
             <label for="myfile">Выберите сжатый файл:</label>
-            <input type="file" id="photo_small">
+            <input type="file" id="photo_small" accept=".jpg">
         </div>
         <div>
             <label for="myfile">Выберите основной файл:</label>

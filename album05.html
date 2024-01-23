@@ -12,7 +12,7 @@
         function showBig(photo_id) {
             $("div.thumbs img").removeClass("selected");
 
-            let url = `api/photo_info_service.php?id=${photo_id}`;
+            let url = `api/get_photo_info_db.php?id=${photo_id}`;
             // отправлять сетевые запросы на сервер get/post. 
             // возвращает промис
             fetch(url)
@@ -30,7 +30,7 @@
         // запускается по загрузке страницы
         // является jquery ф-ией
         $(document).ready(function(){
-            var url = "api/thumb_service_db.php";
+            var url = "api/get_photo_name_db.php";
             // Description: Load JSON-encoded data from the server using a GET HTTP request.
             // This is a shorthand Ajax function:
             $.getJSON(
@@ -47,7 +47,7 @@
         });
     </script>
 </head>
-<body onload="showPhotos()">
+<body>
     <h2>Aльбом на PHP & JS (JAVA) c БД</h2>
     <!-- Элемент разделения контента HTML (<div>) 
         является универсальным контейнером для потокового контента. 
