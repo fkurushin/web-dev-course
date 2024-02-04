@@ -8,13 +8,13 @@
     <!-- jQuery - библа для анимации -->
     <script src="scripts/jquery-3.7.1.js"></script>
     <script>
-        function showBig(photo_name) {
+        // function showBig(photo_name) {
 
-            $("div.thumbs img").removeClass("selected");
-            var thumb = window.event.srcElement;
-            thumb.classList.add("selected");
-            document.getElementById("main").src = "photos/" + photo_name + ".jpg";
-        }
+        //     $("div.thumbs img").removeClass("selected");
+        //     var thumb = window.event.srcElement;
+        //     thumb.classList.add("selected");
+        //     document.getElementById("main").src = "photos/" + photo_name + ".jpg";
+        // }
     </script>
 </head>
 <body>

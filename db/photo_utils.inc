@@ -25,7 +25,8 @@ function get_photo_info($photoID) {
     include PATH_TO_PARAMS;
     $conn = mysqli_connect($SERVER,  $USER, $PASSWORD, $DATABASE);
     $sql = "
-        SELECT Title, Description, Photo FROM Photos
+        SELECT Title, Description, Photo 
+        FROM Photos
         WHERE PhotoID=$photoID
     ";
     $cursor = mysqli_execute_query($conn, $sql);
@@ -49,6 +50,28 @@ function post_new_photo($title, $description, $thumb, $photo) {
     mysqli_close($conn);
 }
 
+function get_info_by_description($search_query) {
+    // title - название фотокарточки
+    // description - описание содержимого фотокарточки
+    // thumb - название [с суффиксом _small]
+    // photo - название основного файла
+    $search_query_lower = strtolower($search_query);
+    include PATH_TO_PARAMS;
+    $conn = mysqli_connect($SERVER,  $USER, $PASSWORD, $DATABASE);
+    // SELECT Title, Description, Thumb, Photo
+    // maybe capitalization
+    $sql = "
+        SELECT *
+        FROM photos
+        WHERE LOWER(Description) LIKE '%$search_query_lower%';
+    ";
+
+    $cursor = mysqli_execute_query($conn, $sql);
+    $photo_info = mysqli_fetch_all($cursor);
+    mysqli_close($conn); 
+    return $photo_info;
+}
+
 // ini_set('display_errors', '1');
 // ini_set('display_startup_errors', '1');
 // error_reporting(E_ALL);
@@ -57,4 +80,4 @@ function post_new_photo($title, $description, $thumb, $photo) {
 
 // типа принта в python
 // echo get_photo_list()[0][0];
-// var_dump(get_photo_info(2));
+// var_dump(get_info_by_description("german"));
