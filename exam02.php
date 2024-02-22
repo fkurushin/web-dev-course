@@ -43,7 +43,6 @@
 
         foreach ($result as $person) {
             // echo("<img src='photos/$photo_file' onclick='showBig(`$photo_name`);'/>");
-            // Access individual elements of the sub-array
             // Title, Description, Thumb, Photo
             $title = $person[1];
             $description = $person[2];
