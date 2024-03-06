@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import EventList from './components/EventList';
 
-function App() {
-  return (
+const App = () => {
+ const events = [
+    { title: 'Событие 1', description: 'Описание события 1', date: '24.02.2023' },
+    { title: 'Событие 2', description: 'Описание события 2', date: '25.02.2023' },
+    // Добавьте больше событий по аналогии
+ ];
+
+ return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EventList events={events} />
     </div>
-  );
-}
+ );
+};
 
 export default App;
